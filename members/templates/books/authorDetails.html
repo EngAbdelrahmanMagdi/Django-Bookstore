@@ -1,0 +1,24 @@
+{% extends '../base/base.html' %}
+{% load static%}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/styles/style.css' %}">
+{% endblock %}
+{% block title %} {{author.name}} Details {% endblock %}
+
+{% block content %}
+    <div class="card" style="width: 18rem;">       
+        <div class="card-body">
+          <h5 class="card-title" id="bname">{{author.id}} : {{author.name}}</h5>
+          <h5 class="card-title"> Author books : </h5>
+            <ul>
+                {% for book in books %}
+                <li> {{book.name}} </li>
+                {% empty %}
+                <h1> no author found</h1>
+                 {% endfor %}
+            </ul>
+          <h5 class="card-title"> Number of books : {{number_of_books}} </h5>
+          <a href="{% url 'books'  %}" class="btn btn-light"><h6 id="bla">Go back to books</h6></a>
+        </div>
+      </div>
+{% endblock %}
